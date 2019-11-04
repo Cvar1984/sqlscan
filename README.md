@@ -11,7 +11,7 @@ Install the dependencies and software.
 
 ```sh
 $ sudo apt install php php-curl curl
-$ sudo curl https://raw.githubusercontent.com/Cvar1984/sqlscan/master/build/main.phar --output /usr/local/bin/sqlscan
+$ sudo curl https://raw.githubusercontent.com/Cvar1984/sqlscan/dev/build/main.phar --output /usr/local/bin/sqlscan
 $ chmod +x /usr/local/bin/sqlscan
 $ sqlscan http://example.gov
 ```
@@ -20,7 +20,7 @@ For Android Termux environments
 
 ```sh
 $ apt install php curl
-$ curl https://raw.githubusercontent.com/Cvar1984/sqlscan/master/build/main.phar --output $PREFIX/bin/sqlscan
+$ curl https://raw.githubusercontent.com/Cvar1984/sqlscan/dev/build/main.phar --output $PREFIX/bin/sqlscan
 $ chmod +x $PREFIX/bin/sqlscan
 $ sqlscan http://example.gov
 ```
