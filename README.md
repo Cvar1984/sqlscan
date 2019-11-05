@@ -32,7 +32,6 @@ $ sqlscan list_url.txt
 
  - Bypass waf
  - url from json
- - fix bug downloading file from extrackted urls
 
 License
 > Copyright (c) 2019 <Cvar1984>
