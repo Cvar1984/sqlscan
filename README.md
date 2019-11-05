@@ -15,6 +15,7 @@ $ sudo apt install php php-curl curl
 $ sudo curl https://raw.githubusercontent.com/Cvar1984/sqlscan/dev/build/main.phar --output /usr/local/bin/sqlscan
 $ chmod +x /usr/local/bin/sqlscan
 $ sqlscan http://example.gov
+$ sqlscan list_url.txt
 ```
 
 For Android Termux environments
@@ -24,11 +25,14 @@ $ apt install php curl
 $ curl https://raw.githubusercontent.com/Cvar1984/sqlscan/dev/build/main.phar --output $PREFIX/bin/sqlscan
 $ chmod +x $PREFIX/bin/sqlscan
 $ sqlscan http://example.gov
+$ sqlscan list_url.txt
 ```
 
 ### Todo
 
  - Bypass waf
+ - url from json
+ - fix bug downloading file from extrackted urls
 
 License
 > Copyright (c) 2019 <Cvar1984>
