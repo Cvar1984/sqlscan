@@ -32,6 +32,21 @@ class Sqlscan extends WebsiteParser {
                 elseif(pathinfo($urls[0], PATHINFO_EXTENSION) =='tar') {
                     continue;
                 }
+                elseif(pathinfo($urls[0], PATHINFO_EXTENSION) =='jpg') {
+                    continue;
+                }
+                elseif(pathinfo($urls[0], PATHINFO_EXTENSION) =='png') {
+                    continue;
+                }
+                elseif(pathinfo($urls[0], PATHINFO_EXTENSION) =='gif') {
+                    continue;
+                }
+                elseif(pathinfo($urls[0], PATHINFO_EXTENSION) =='m4a') {
+                    continue;
+                }
+                elseif(pathinfo($urls[0], PATHINFO_EXTENSION) =='3gp') {
+                    continue;
+                }
 
                 if(!preg_match('/=/',$urls[0])) {
                     continue;
