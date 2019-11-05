@@ -17,6 +17,25 @@ class Sqlscan extends WebsiteParser {
 
         if(!empty($count)) {
             foreach($url as $urls) {
+                if(pathinfo($urls[0], PATHINFO_EXTENSION) =='pdf') {
+                    continue;
+                }
+                elseif(pathinfo($urls[0], PATHINFO_EXTENSION) =='zip') {
+                    continue;
+                }
+                elseif(pathinfo($urls[0], PATHINFO_EXTENSION) =='mp4') {
+                    continue;
+                }
+                elseif(pathinfo($urls[0], PATHINFO_EXTENSION) =='mp3') {
+                    continue;
+                }
+                elseif(pathinfo($urls[0], PATHINFO_EXTENSION) =='tar') {
+                    continue;
+                }
+
+                if(!preg_match('/=/',$urls[0])) {
+                    continue;
+                }
                 $urls[0]=str_replace('=','=\'',$urls[0]);
                 $this->println('Testing '.$urls[0]);
                 $result=@file_get_contents($urls[0]);
