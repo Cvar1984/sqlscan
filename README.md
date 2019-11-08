@@ -1,8 +1,9 @@
 # sqlscan
 > sqlscan is auto sql website scanner
+> use sitemap for best result
 [![asciicast](https://asciinema.org/a/ap8VxyIdLJb2zJS7X8Q5WpNtH.svg)](https://asciinema.org/a/ap8VxyIdLJb2zJS7X8Q5WpNtH)
 - Simple to use
-  - Support PHP5
+- Support PHP5
 
 ### Installation
 
