@@ -1,8 +1,8 @@
 # sqlscan
-> sqlscan is auto web scanner for finding sql inject point.
+> sqlscan is quick web scanner for find an sql inject point.
 >
 > use sitemap for best result
-[![asciicast](https://asciinema.org/a/ap8VxyIdLJb2zJS7X8Q5WpNtH.svg)](https://asciinema.org/a/ap8VxyIdLJb2zJS7X8Q5WpNtH)
+[![images](images.jpg)
 - Simple to use
 - Support PHP 5.5
 
