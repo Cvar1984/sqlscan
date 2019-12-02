@@ -6,21 +6,23 @@
 - Simple to use
 - Support PHP 5.5
 
-### Installation
+## Installation
 
 requires [php](https://php.net ) to run.
+### PHP Depencies
+- ext-bz2
 
-Install the dependencies and software.
+### Install the software.
 
 ```sh
-$ sudo apt install php php-curl curl
+$ sudo apt install php php-bz2 php-curl curl
 $ sudo curl https://raw.githubusercontent.com/Cvar1984/sqlscan/dev/build/main.phar --output /usr/local/bin/sqlscan
 $ chmod +x /usr/local/bin/sqlscan
 $ sqlscan http://example.gov
 $ sqlscan list_url.txt
 ```
 
-For Android Termux environments
+### For Android Termux environments
 
 ```sh
 $ apt install php curl
@@ -30,12 +32,12 @@ $ sqlscan http://example.gov
 $ sqlscan list_url.txt
 ```
 
-### Todo
+## Todo
 
  - Bypass waf
  - url from json
 
-License
+## License
 > Copyright (c) 2019 <Cvar1984>
 >
 > Licensed unter the Apache License, Version 2.0 or the MIT license, at your
