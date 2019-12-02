@@ -26,6 +26,6 @@ try {
         throw new Exception("Need argument, eg : sqlscan http://example.net");
     }
 } catch (Exception $e) {
-    echo $e->getMessage() . PHP_EOL;
+    fprintf(STDERR, '%s%s', $e->getMessage(), PHP_EOL);
     exit(1);
 }
