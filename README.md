@@ -2,7 +2,7 @@
 > sqlscan is quick web scanner for find an sql inject point.
 >
 > use sitemap for best result
-[![images](images.jpg)
+[](images.jpg)
 - Simple to use
 - Support PHP 5.5
 
