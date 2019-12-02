@@ -1,3 +1,7 @@
+[![ForTheBadge built-by-developers](http://ForTheBadge.com/images/badges/built-by-developers.svg)](https://github.com/Cvar1984)
+[![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/Cvar1984/sqlscan/blob/dev/LICENSE)
+[![GitHub release](https://img.shields.io/github/release/Naereen/StrapDown.js.svg)](https://GitHub.com/Cvar1984/sqlscan/releases/)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 # sqlscan
 > sqlscan is quick web scanner for find an sql inject point.
 >
