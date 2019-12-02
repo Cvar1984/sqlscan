@@ -2,13 +2,28 @@
 namespace Cvar\Sqlscan;
 
 class Sqlscan  {
+    protected static $trace;
+    protected static $time;
     private function println($var)
     {
         fprintf(STDOUT, '[#] %s%s', $var, PHP_EOL);
     }
+    public function __setBreakPoint()
+    {
+        self::$time = microtime(true);
+        self::$strace = debug_backtrace();
+    }
+    public function __getBreakPoint()
+    {
+        $return=[
+            self::$trace,
+            round((microtime(true)-self::$time)*1000)
+        ];
+        return json_encode($return, JSON_PRETTY_PRINT);
+    }
     function __construct($url)
     {
-        $this->println('including config');
+        //$this->println('including config');
         $err = file_get_contents('phar://main.phar/sql.ini');
         $err = trim($err, ',');
         $err = explode(',', $err);
@@ -45,14 +60,14 @@ class Sqlscan  {
                 if (!preg_match('/=/', $urls[0])) {
                     continue;
                 }
-                $this->println('injecting magic char');
+                //$this->println('injecting magic char');
                 $urls[0] = str_replace('=', '=\'', $urls[0]);
                 $this->println('Testing : ' . $urls[0]);
                 $result = @file_get_contents($urls[0]);
 
                 foreach ($err as $errs) {
                     if (preg_match('/' . $errs . '/', $result)) {
-                        $this->println('Vuln -> ' . $urls[0]);
+                        $this->println('Hit (' . $errs . ')');
                         $file = @fopen('result.txt', 'a');
                         if(!$file) {
                             $this->println('warning can\'t write result');
