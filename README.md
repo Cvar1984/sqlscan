@@ -10,9 +10,10 @@
 
 requires [php](https://php.net ) to run.
 ### PHP Depencies
-- ext-bz2
+ - ext-bz2
+ - ext-curl
 
-### Install the software.
+### For Pc Linux environments.
 
 ```sh
 $ sudo apt install php php-bz2 php-curl curl
@@ -33,12 +34,14 @@ $ sqlscan list_url.txt
 ```
 
 ## Todo
-
+ - Quick dorker
+ - Quick shell code injector
  - Bypass waf
- - url from json
+ - Url from json
+ - report csv/xml/html/pdf/db
 
 ## License
-> Copyright (c) 2019 <Cvar1984>
+> Copyright (c) 2019 \<Cvar1984>
 >
 > Licensed unter the Apache License, Version 2.0 or the MIT license, at your
 > option.
