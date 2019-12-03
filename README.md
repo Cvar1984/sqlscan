@@ -8,7 +8,7 @@
 > not for educational, this is for hacking.
 >
 > use sitemap for best result
-![sqlscan images](images.jpg)
+![sqlscan images](assets/images.jpg)
 - Simple to use
 - Multi platform
 - Fast af
