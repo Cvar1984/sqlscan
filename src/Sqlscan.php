@@ -4,11 +4,9 @@ namespace Cvar\Sqlscan;
 class Sqlscan  {
     protected static $trace;
     protected static $time;
-    private function println($var)
-    {
-        fprintf(STDOUT, '[#] %s%s', $var, PHP_EOL);
-    }
+    protected static $sql;
     public function __setBreakPoint()
+
     {
         self::$time = microtime(true);
         self::$strace = debug_backtrace();
@@ -21,17 +19,28 @@ class Sqlscan  {
         ];
         return json_encode($return, JSON_PRETTY_PRINT);
     }
-    function __construct($url)
+    function __construct()
     {
-        //$this->println('including config');
-        $err = file_get_contents('phar://main.phar/sql.ini');
-        $err = trim($err, ',');
-        $err = explode(',', $err);
-        $this->println('extracting links');
+        $print  = new \Cvar\Sqlscan\Cli();
+        $sql = file_get_contents('phar://main.phar/sql.ini');
+        if(!$sql) {
+            $print->printError('Sql word not found');
+        }
+        $print->printSuccess('Sql word included');
+        $sql = trim($sql, ',');
+        self::$sql = explode(',', $sql);
+
+    }
+    public function scan($url, $filename) {
+        $print  = new \Cvar\Sqlscan\Cli();
         $parser = new \Cvar\Sqlscan\WebsiteParser($url);
-        $url = $parser->getHrefLinks();
+        if(empty($url)) {
+            $print->printError('Please insert url');
+        }
+        $print->printLine('extracting links');
+        $url   = $parser->getHrefLinks();
         $count = sizeof($url);
-        $this->println('Total raw urls : ' . $count);
+        $print->printLine('Total raw urls : ' . $count);
 
         if (!empty($count)) {
             foreach ($url as $urls) {
@@ -60,17 +69,16 @@ class Sqlscan  {
                 if (!preg_match('/=/', $urls[0])) {
                     continue;
                 }
-                //$this->println('injecting magic char');
                 $urls[0] = str_replace('=', '=\'', $urls[0]);
-                $this->println('Testing : ' . $urls[0]);
+                $print->printLine('Testing : ' . $urls[0]);
                 $result = @file_get_contents($urls[0]);
 
-                foreach ($err as $errs) {
-                    if (preg_match('/' . $errs . '/', $result)) {
-                        $this->println('Hit (' . $errs . ')');
-                        $file = @fopen('result.txt', 'a');
+                foreach (self::$sql as $sqli) {
+                    if (preg_match('/' . $sqli . '/', $result)) {
+                        $print->printSuccess('Hit (' . $sqli . ')');
+                        $file = @fopen($filename, 'a');
                         if(!$file) {
-                            $this->println('warning can\'t write result');
+                            $print->printWarning('warning can\'t write result');
                         }
                         else {
                             fprintf($file, $urls[0] . PHP_EOL);
@@ -81,7 +89,7 @@ class Sqlscan  {
                 }
             }
         } else {
-            throw new \Exception("Can't continue, urls is empty");
+            $print->printError('Can\'t continue, urls is empty');
         }
     }
 }
