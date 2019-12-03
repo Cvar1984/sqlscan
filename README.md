@@ -5,11 +5,14 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 # sqlscan
 > sqlscan is quick web scanner for find an sql inject point.
+> not for educational, this is for hacking.
 >
 > use sitemap for best result
 ![sqlscan images](images.jpg)
 - Simple to use
-- Support PHP 5.5
+- Multi platform
+- Fast af
+- Cool af
 
 ## Installation
 
@@ -24,8 +27,8 @@ requires [php](https://php.net ) to run.
 $ sudo apt install php php-bz2 php-curl curl
 $ sudo curl https://raw.githubusercontent.com/Cvar1984/sqlscan/dev/build/main.phar --output /usr/local/bin/sqlscan
 $ chmod +x /usr/local/bin/sqlscan
-$ sqlscan http://example.gov
-$ sqlscan list_url.txt
+$ sqlscan http://example.gov --scan
+$ sqlscan list_url.txt --scan
 ```
 
 ### For Android Termux environments
@@ -34,8 +37,8 @@ $ sqlscan list_url.txt
 $ apt install php curl
 $ curl https://raw.githubusercontent.com/Cvar1984/sqlscan/dev/build/main.phar --output $PREFIX/bin/sqlscan
 $ chmod +x $PREFIX/bin/sqlscan
-$ sqlscan http://example.gov
-$ sqlscan list_url.txt
+$ sqlscan http://example.gov --scan
+$ sqlscan list_url.txt --scan
 ```
 
 ## Todo
@@ -43,7 +46,8 @@ $ sqlscan list_url.txt
  - Quick shell code injector
  - Bypass waf
  - Url from json
- - report csv/xml/html/pdf/db
+ - report csv/xml/html/pdf/db ( composer dependcies )
+ - multi threads ( pthread )
 
 ## License
 > Copyright (c) 2019 \<Cvar1984>
