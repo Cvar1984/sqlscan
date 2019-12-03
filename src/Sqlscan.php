@@ -6,35 +6,34 @@ class Sqlscan  {
     protected static $time;
     protected static $sql;
     public function __setBreakPoint()
-
     {
         self::$time = microtime(true);
         self::$strace = debug_backtrace();
     }
     public function __getBreakPoint()
     {
-        $return=[
+        $return = [
             self::$trace,
-            round((microtime(true)-self::$time)*1000)
+            round((microtime(true) - self::$time) * 1000)
         ];
         return json_encode($return, JSON_PRETTY_PRINT);
     }
     function __construct()
     {
-        $print  = new \Cvar\Sqlscan\Cli();
+        $print = new \Cvar\Sqlscan\Cli();
         $sql = file_get_contents('phar://main.phar/sql.ini');
-        if(!$sql) {
+        if (!$sql) {
             $print->printError('Sql word not found');
         }
         $print->printSuccess('Sql word included');
         $sql = trim($sql, ',');
         self::$sql = explode(',', $sql);
-
     }
-    public function scan($url, $filename) {
+    public function scan($url, $filename)
+    {
         $print  = new \Cvar\Sqlscan\Cli();
         $parser = new \Cvar\Sqlscan\WebsiteParser($url);
-        if(empty($url)) {
+        if (empty($url)) {
             $print->printError('Please insert url');
         }
         $print->printLine('extracting links');
@@ -77,10 +76,9 @@ class Sqlscan  {
                     if (preg_match('/' . $sqli . '/', $result)) {
                         $print->printSuccess('Hit (' . $sqli . ')');
                         $file = @fopen($filename, 'a');
-                        if(!$file) {
+                        if (!$file) {
                             $print->printWarning('warning can\'t write result');
-                        }
-                        else {
+                        } else {
                             fprintf($file, $urls[0] . PHP_EOL);
                             fclose($file);
                         }

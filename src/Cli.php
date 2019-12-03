@@ -1,7 +1,8 @@
 <?php
 namespace Cvar\Sqlscan;
-class Cli {
 
+class Cli
+{
     public function printStandar($var)
     {
         fprintf(STDOUT, '%s', $var);
@@ -16,7 +17,7 @@ class Cli {
     }
     public function printError($var)
     {
-        throw new \Exception('[x] '.$var);
+        throw new \Exception('[x] ' . $var);
     }
     public function printSuccess($var)
     {
