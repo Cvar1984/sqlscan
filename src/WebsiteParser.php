@@ -9,7 +9,7 @@
  * @link http://www.scripts.morshed-alam.com/scrapping/
  * @website http://morshed-alam.com
  */
-namespace Cvar\Sqlscan;
+namespace Cvar1984\SqlScan;
 
 class WebsiteParser
 {

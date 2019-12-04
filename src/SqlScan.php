@@ -1,41 +1,31 @@
 <?php
-namespace Cvar\Sqlscan;
+namespace Cvar1984\SqlScan;
 
-class Sqlscan  {
-    protected static $trace;
-    protected static $time;
+class SqlScan  {
     protected static $sql;
-    public function __setBreakPoint()
-    {
-        self::$time = microtime(true);
-        self::$strace = debug_backtrace();
-    }
-    public function __getBreakPoint()
-    {
-        $return = [
-            self::$trace,
-            round((microtime(true) - self::$time) * 1000)
-        ];
-        return json_encode($return, JSON_PRETTY_PRINT);
-    }
+
     function __construct()
     {
-        $print = new \Cvar\Sqlscan\Cli();
+        // setup
+        $print = new \Cvar1984\SqlScan\Cli();
         $sql = file_get_contents('phar://main.phar/sql.ini');
         if (!$sql) {
             $print->printError('Sql word not found');
         }
+
         $print->printSuccess('Sql word included');
         $sql = trim($sql, ',');
         self::$sql = explode(',', $sql);
     }
-    public function scan($url, $filename)
+
+    public function scan(string $url, string $filename)
     {
-        $print  = new \Cvar\Sqlscan\Cli();
-        $parser = new \Cvar\Sqlscan\WebsiteParser($url);
+        $print  = new \Cvar1984\SqlScan\Cli();
+        $parser = new \Cvar1984\SqlScan\WebsiteParser($url);
         if (empty($url)) {
             $print->printError('Please insert url');
         }
+
         $print->printLine('extracting links');
         $url   = $parser->getHrefLinks();
         $count = sizeof($url);
@@ -64,10 +54,10 @@ class Sqlscan  {
                 } elseif (pathinfo($urls[0], PATHINFO_EXTENSION) == '3gp') {
                     continue;
                 }
-
                 if (!preg_match('/=/', $urls[0])) {
                     continue;
                 }
+
                 $urls[0] = str_replace('=', '=\'', $urls[0]);
                 $print->printLine('Testing : ' . $urls[0]);
                 $result = @file_get_contents($urls[0]);
@@ -91,4 +81,3 @@ class Sqlscan  {
         }
     }
 }
-

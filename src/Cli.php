@@ -1,5 +1,5 @@
 <?php
-namespace Cvar\Sqlscan;
+namespace Cvar1984\SqlScan;
 
 class Cli
 {
