@@ -1,13 +1,11 @@
 <?php
-require 'phar://main.phar/WebsiteParser.php';
-require 'phar://main.phar/SqlScan.php';
-require 'phar://main.phar/Cli.php';
-use Cvar1984\Sqlscan\SqlScan;
+require __DIR__ . '/vendor/autoload.php';
+use Cvar1984\SqlScan\SqlScan;
 use Cvar1984\SqlScan\Cli;
 
 try {
     $print = new Cli();
-    $file  = file_get_contents('phar://main.phar/banner.txt');
+    $file  = file_get_contents('assets/banner.txt');
     if ($file) {
         $print->printStandar($file);
     } else {
