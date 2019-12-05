@@ -20,7 +20,7 @@ requires [php](https://php.net ) to run.
 ### PHP Depencies
  - ext-bz2
  - ext-curl
-
+> see composer.json for more information
 ### For Pc Linux environments.
 
 ```sh
@@ -40,7 +40,13 @@ $ chmod +x $PREFIX/bin/sqlscan
 $ sqlscan http://example.gov --scan
 $ sqlscan list_url.txt --scan
 ```
+## build from source
 
+download [Box](https://github.com/box-project/box2)
+```sh
+$ composer install
+$ box build
+```
 ## Todo
  - Quick dorker
  - Quick shell code injector
