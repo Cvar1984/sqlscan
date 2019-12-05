@@ -1,0 +1,21 @@
+{
+    "alias": "main.phar",
+    "chmod": "0755",
+    "directories": ["src","assets"],
+    "files": [
+        "LICENSE"
+    ],
+    "finder": [
+        {
+            "name": "*",
+            "exclude": ["Tests"],
+            "in": ["vendor","assets"]
+        }
+    ],
+    "git-version": "package_version",
+    "main": "main.php",
+    "output": "build/main.phar",
+    "stub": true,
+    "algorithm" :"SHA512",
+    "compression" :"BZ2"
+}
