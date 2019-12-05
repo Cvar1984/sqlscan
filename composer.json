@@ -1,0 +1,22 @@
+{
+    "name": "cvar198/sqlscan",
+    "description": "quick sql scanner",
+    "type": "application",
+    "minimum-stability": "stable",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Cvar1984",
+            "email": "gedzsarjuncomuniti@gmail.com"
+        }
+    ],
+    "require": {
+        "ext-curl": "*",
+        "ext-bz2": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Cvar1984\\SqlScan\\":"src/"
+        }
+    }
+}
