@@ -8,7 +8,7 @@ class SqlScan  {
     {
         // setup
         $print = new \Cvar1984\SqlScan\Cli();
-        $sql = file_get_contents('assets/sql.ini');
+        $sql = file_get_contents('phar://main.phar/assets/sql.ini');
         if (!$sql) {
             $print->printError('Sql word not found');
         }

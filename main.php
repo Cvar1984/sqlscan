@@ -5,7 +5,7 @@ use Cvar1984\SqlScan\Cli;
 
 try {
     $print = new Cli();
-    $file  = file_get_contents('assets/banner.txt');
+    $file  = file_get_contents('phar://main.phar/assets/banner.txt');
     if ($file) {
         $print->printStandar($file);
     } else {

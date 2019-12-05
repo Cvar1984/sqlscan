@@ -1,15 +1,17 @@
 {
     "alias": "main.phar",
     "chmod": "0755",
-    "directories": ["src","assets"],
+    "directories": ["src","assets","vendor"],
     "files": [
-        "LICENSE"
+        "LICENSE",
+        "assets/banner.txt",
+        "assets/sql.ini"
     ],
     "finder": [
         {
-            "name": "*",
+            "name": "*.php",
             "exclude": ["Tests"],
-            "in": ["vendor","assets"]
+            "in": ["vendor"]
         }
     ],
     "git-version": "package_version",
