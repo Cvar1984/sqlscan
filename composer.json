@@ -12,7 +12,11 @@
     ],
     "require": {
         "ext-curl": "*",
-        "ext-bz2": "*"
+        "ext-bz2": "*",
+        "serps/core": "^0.3.0",
+        "serps/search-engine-google": "^0.4.8",
+        "serps/http-client-curl": "^0.2.3",
+        "guzzlehttp/psr7": "^1.6"
     },
     "autoload": {
         "psr-4": {
