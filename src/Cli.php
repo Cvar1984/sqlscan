@@ -3,31 +3,31 @@ namespace Cvar1984\SqlScan;
 
 class Cli
 {
-    public function printStandar($var)
+    public static function printStandar($var)
     {
         fprintf(STDOUT, '%s', $var);
     }
-    public function printLine($var)
+    public static function printLine($var)
     {
         fprintf(STDOUT, '[#] %s%s', $var, PHP_EOL);
     }
-    public function printWarning($var)
+    public static function printWarning($var)
     {
         fprintf(STDERR, '[!] %s%s', $var, PHP_EOL);
     }
-    public function printError($var)
+    public static function printError($var)
     {
         throw new \Exception('[x] ' . $var);
     }
-    public function printSuccess($var)
+    public static function printSuccess($var)
     {
         fprintf(STDOUT, '[+] %s%s', $var, PHP_EOL);
     }
-    public function printFailed($var)
+    public static function printFailed($var)
     {
         fprintf(STDOUT, '[-] %s%s', $var, PHP_EOL);
     }
-    public function printAsk($var)
+    public static function printAsk($var)
     {
         fprintf(STDOUT, '[?] %s%s', $var, PHP_EOL);
     }
