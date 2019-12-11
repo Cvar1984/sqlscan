@@ -4,8 +4,10 @@ use Cvar1984\SqlScan\SqlScan;
 use Cvar1984\SqlScan\Cli;
 use Cvar1984\SqlScan\Dorker;
 try {
-    $file = file_get_contents('phar://main.phar/assets/banner.txt');
+    $path = 'phar://main.phar/assets/banner_' . rand(0, 7) . '.txt';
+    $file = fopen($path, 'r');
     if ($file) {
+        $file = fread($file, filesize($path));
         Cli::printStandar($file);
     } else {
         Cli::printWarning('can\'t load banner');
@@ -22,7 +24,7 @@ try {
                     $pwd = getcwd() . DIRECTORY_SEPARATOR . $url;
                     if (file_exists($pwd)) {
                         $file = file_get_contents($pwd);
-                        $file = trim($file, "\n");
+                        $file = trim($file, " \n");
                         $url  = explode("\n", $file);
                         foreach ($url as $url) {
                             $sql->scan($url, 'result.txt');
