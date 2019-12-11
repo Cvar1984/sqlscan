@@ -49,7 +49,6 @@ $ composer install
 $ box build
 ```
 ## Todo
- - Quick dorker
  - Quick shell code injector
  - Bypass waf
  - Url from json
