@@ -1,0 +1,13 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(int argc, char *argv[])
+{
+    fprintf(stdout, "Simple calculator\n");
+    system("python");
+    return 0;
+}
+                    { Well that was quick }
+            
+            © 2019, <Cvar1984@BHSec>
+------------------------------------------------
