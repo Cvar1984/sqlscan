@@ -31,6 +31,7 @@ class SqlScan  {
         Cli::printLine('Total raw urls : ' . $count);
 
         if (!empty($count)) {
+            $urlz=array();
             foreach ($url as $urls) {
                 if (pathinfo($urls[0], PATHINFO_EXTENSION) == 'pdf') continue;
                 elseif (pathinfo($urls[0], PATHINFO_EXTENSION) == 'zip') continue;
