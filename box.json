@@ -3,7 +3,7 @@
     "chmod": "0755",
     "directories": ["assets"],
     "blacklist": [
-        "assets/images.jpg"
+        "assets/images.gif"
     ],
     "finder": [
         {
