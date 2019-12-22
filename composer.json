@@ -16,7 +16,8 @@
         "serps/core": "^0.3.0",
         "serps/search-engine-google": "^0.4.8",
         "serps/http-client-curl": "^0.2.3",
-        "guzzlehttp/psr7": "^1.6"
+        "guzzlehttp/psr7": "^1.6",
+        "guiguiboy/php-cli-progress-bar": "^0.0.4"
     },
     "autoload": {
         "psr-4": {
