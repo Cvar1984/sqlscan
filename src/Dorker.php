@@ -5,7 +5,7 @@ use Serps\HttpClient\CurlClient;
 use Serps\SearchEngine\Google\GoogleUrl;
 use Serps\Core\Browser\Browser;
 use Serps\SearchEngine\Google\NaturalResultType;
-use Cvar1984\SqlScan\Cli;
+use Cvar1984\SqlScan\Cli as Cout;
 
 class Dorker
 {
@@ -23,8 +23,8 @@ class Dorker
 
         foreach ($results as $result) {
             if ($result->is(NaturalResultType::CLASSICAL)) {
-                Cli::printLine('title : ' . $result->title);
-                Cli::printLine('url : ' . $result->url);
+                Cout::printLine('title : ' . $result->title);
+                Cout::printLine('url : ' . $result->url);
                 $write = @fopen($filename, 'a');
                 if ($write) {
                     fprintf($write, '%s%s', $result->url, PHP_EOL);
@@ -35,7 +35,7 @@ class Dorker
             }
         }
         if (!empty(self::$error)) {
-            Cli::printWarning(self::$error);
+            Cout::printWarning(self::$error);
         }
     }
 }

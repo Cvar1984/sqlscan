@@ -1,7 +1,7 @@
 <?php
 require __DIR__ . '/vendor/autoload.php';
 use Cvar1984\SqlScan\SqlScan;
-use Cvar1984\SqlScan\Cli;
+use Cvar1984\SqlScan\Cli as Cout;
 use Cvar1984\SqlScan\Dorker;
 try {
     $count = scandir('phar://main.phar/assets/');
@@ -10,9 +10,9 @@ try {
     $file = fopen($path, 'r');
     if ($file) {
         $file = fread($file, filesize($path));
-        Cli::printStandar($file);
+        Cout::printStandar($file);
     } else {
-        Cli::printWarning('can\'t load banner');
+        Cout::printWarning('can\'t load banner');
     }
     if ($argc >= 3) {
         switch ($argv[2]) {
@@ -32,7 +32,7 @@ try {
                             $sql->scan($url, 'result.txt');
                         }
                     } else {
-                        Cli::printError('File not exists ' . $pwd);
+                        Cout::printError('File not exists ' . $pwd);
                     }
                 }
                 break;
@@ -42,17 +42,17 @@ try {
                 break;
 
             case '--shell':
-                Cli::printError('under development');
+                Cout::printError('under development');
                 break;
 
             default:
-                Cli::printAsk('Available method : --scan, --dork, --shell');
-                Cli::printError('Undefined method : ' . $argv[2]);
+                Cout::printAsk('Available method : --scan, --dork, --shell');
+                Cout::printError('Undefined method : ' . $argv[2]);
                 break;
         }
     } else {
-        Cli::printAsk('Usage : sqlscan [required] [option]');
-        Cli::printLine('Examples : sqlscan http://hackme.org --scan');
+        Cout::printAsk('Usage : sqlscan [required] [option]');
+        Cout::printLine('Examples : sqlscan http://hackme.org --scan');
     }
 } catch (Exception $e) {
     fprintf(STDERR, '%s%s', $e->getMessage(), PHP_EOL);

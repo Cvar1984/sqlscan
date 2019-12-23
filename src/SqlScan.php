@@ -1,6 +1,6 @@
 <?php
 namespace Cvar1984\SqlScan;
-use Cvar1984\SqlScan\Cli;
+use Cvar1984\SqlScan\Cli as Cout;
 
 class SqlScan  {
     protected static $sql;
@@ -10,10 +10,10 @@ class SqlScan  {
         // setup
         $sql = file_get_contents('phar://main.phar/assets/sql.ini');
         if (!$sql) {
-            Cli::printError('Sql word not found');
+            Cout::printError('Sql word not found');
         }
 
-        Cli::printSuccess('Sql word included');
+        Cout::printSuccess('Sql word included');
         $sql = trim($sql, ',');
         self::$sql = explode(',', $sql);
     }
@@ -22,13 +22,13 @@ class SqlScan  {
     {
         $parser = new \Cvar1984\SqlScan\WebsiteParser($url);
         if (empty($url)) {
-            Cli::printError('Please insert url');
+            Cout::printError('Please insert url');
         }
 
-        Cli::printLine('Extracting : ' . $url);
+        Cout::printLine('Extracting : ' . $url);
         $url   = $parser->getHrefLinks();
         $count = sizeof($url);
-        Cli::printLine('Total raw urls : ' . $count);
+        Cout::printLine('Total raw urls : ' . $count);
 
         if (!empty($count)) {
             $urlz = array();
@@ -48,19 +48,19 @@ class SqlScan  {
             }
             $count = count($urlz);
             $progressBar = new \ProgressBar\Manager(0, $count);
-            Cli::printLine('Total available urls : ' . $count);
+            Cout::printLine('Total available urls : ' . $count);
             foreach ($urlz as $urls) {
                 $urls = str_replace('=', '=\'', $urls);
-                //Cli::printLine('Testing : ' . $urls);
+                //Cout::printLine('Testing : ' . $urls);
                 $progressBar->advance();
                 $result = @file_get_contents($urls);
 
                 foreach (self::$sql as $sqli) {
                     if (preg_match('/' . $sqli . '/', $result)) {
-                        Cli::printSuccess('Hit (' . $sqli . ')');
+                        Cout::printSuccess('Hit (' . $sqli . ')');
                         $file = @fopen($filename, 'a');
                         if (!$file) {
-                            Cli::printWarning('warning can\'t write result');
+                            Cout::printWarning('warning can\'t write result');
                         } else {
                             fprintf($file, $urls . PHP_EOL);
                             fclose($file);
@@ -70,7 +70,7 @@ class SqlScan  {
                 }
             }
         } else {
-            Cli::printError('Can\'t continue, urls is empty');
+            Cout::printError('Can\'t continue, urls is empty');
         }
     }
 }
