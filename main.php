@@ -4,7 +4,9 @@ use Cvar1984\SqlScan\SqlScan;
 use Cvar1984\SqlScan\Cli;
 use Cvar1984\SqlScan\Dorker;
 try {
-    $path = 'phar://main.phar/assets/banner_' . rand(0, 7) . '.txt';
+    $count = scandir('phar://main.phar/assets/');
+    $count = sizeof($count);
+    $path = 'phar://main.phar/assets/banner_' . rand(0, ($count - 2)) . '.txt';
     $file = fopen($path, 'r');
     if ($file) {
         $file = fread($file, filesize($path));
