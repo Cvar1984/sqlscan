@@ -3,6 +3,7 @@
 [![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/Cvar1984/sqlscan/blob/dev/LICENSE)
 [![GitHub release](https://img.shields.io/github/release/Naereen/StrapDown.js.svg)](https://GitHub.com/Cvar1984/sqlscan/releases/)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
+[![CodeFactor](https://www.codefactor.io/repository/github/cvar1984/sqlscan/badge)](https://www.codefactor.io/repository/github/cvar1984/sqlscan)
 [![serps](http://serp-spider.github.io/logo.png)](http://serp-spider.github.io)
 # sqlscan
 > sqlscan is quick web scanner for find an sql inject point.
