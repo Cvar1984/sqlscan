@@ -22,6 +22,7 @@ requires [php](https://php.net ) to run.
 ### PHP Depencies
  - ext-bz2
  - ext-curl
+ - ext-mbstring
 > see composer.json for more information
 ### For Pc Linux environments.
 
