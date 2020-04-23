@@ -24,10 +24,10 @@ requires [php](https://php.net ) to run.
  - ext-curl
  - ext-mbstring
 > see composer.json for more information
-### For Pc Linux environments.
+### For PC Linux debian based environments.
 
 ```sh
-$ sudo apt install php php-bz2 php-curl curl
+$ sudo apt install php php-bz2 php-curl php-mbstring curl
 $ sudo curl https://raw.githubusercontent.com/Cvar1984/sqlscan/dev/build/main.phar --output /usr/local/bin/sqlscan
 $ chmod +x /usr/local/bin/sqlscan
 $ sqlscan http://example.gov --scan
@@ -43,7 +43,7 @@ $ chmod +x $PREFIX/bin/sqlscan
 $ sqlscan http://example.gov --scan
 $ sqlscan list_url.txt --scan
 ```
-## build from source
+## build phar from source
 
 download [Box](https://github.com/box-project/box2)
 ```sh
