@@ -1,4 +1,5 @@
 <?php
+
 namespace Cvar1984\SqlScan;
 
 use Cvar1984\SqlScan\Cli as Cout;
@@ -71,13 +72,14 @@ class SqlScan
                     if (preg_match('/' . $sqli . '/Usi', $result)) {
                         Cout::printSuccess('Hit (' . $sqli . ')');
                         Cout::printSuccess('Url (' . $urls . ')');
-                        Cout::printSuccess('Saved (' . $filename . ')');
+
                         $file = @fopen($filename, 'a');
                         if (!$file) {
                             Cout::printWarning('warning can\'t write result');
                         } else {
                             fprintf($file, $urls . PHP_EOL);
                             fclose($file);
+                            Cout::printSuccess('Saved (' . $filename . ')');
                         }
                         break;
                     }
