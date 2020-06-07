@@ -3,6 +3,7 @@ require __DIR__ . '/vendor/autoload.php';
 use Cvar1984\SqlScan\SqlScan;
 use Cvar1984\SqlScan\Cli as Cout;
 use Cvar1984\SqlScan\Dorker;
+
 try {
     $count = scandir('phar://main.phar/assets/');
     $count = sizeof($count);

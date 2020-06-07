@@ -26,11 +26,25 @@ class Cli
     }
     public static function printLine($var)
     {
-        fprintf(STDOUT, '%s[#]%s %s%s', self::$light_cyan, self::$white, $var, PHP_EOL);
+        fprintf(
+            STDOUT,
+            '%s[#]%s %s%s',
+            self::$light_cyan,
+            self::$white,
+            $var,
+            PHP_EOL
+        );
     }
     public static function printWarning($var)
     {
-        fprintf(STDERR, '%s[!]%s %s%s', self::$light_red, self::$white, $var, PHP_EOL);
+        fprintf(
+            STDERR,
+            '%s[!]%s %s%s',
+            self::$light_red,
+            self::$white,
+            $var,
+            PHP_EOL
+        );
     }
     public static function printError($var)
     {
@@ -38,14 +52,35 @@ class Cli
     }
     public static function printSuccess($var)
     {
-        fprintf(STDOUT, '%s[+]%s %s%s', self::$light_green, self::$white, $var, PHP_EOL);
+        fprintf(
+            STDOUT,
+            '%s[+]%s %s%s',
+            self::$light_green,
+            self::$white,
+            $var,
+            PHP_EOL
+        );
     }
     public static function printFailed($var)
     {
-        fprintf(STDOUT, '%s[-]%s %s%s', self::$light_red, self::$white, $var, PHP_EOL);
+        fprintf(
+            STDOUT,
+            '%s[-]%s %s%s',
+            self::$light_red,
+            self::$white,
+            $var,
+            PHP_EOL
+        );
     }
     public static function printAsk($var)
     {
-        fprintf(STDOUT, '%s[?]%s %s%s', self::$yellow, self::$white, $var, PHP_EOL);
+        fprintf(
+            STDOUT,
+            '%s[?]%s %s%s',
+            self::$yellow,
+            self::$white,
+            $var,
+            PHP_EOL
+        );
     }
 }

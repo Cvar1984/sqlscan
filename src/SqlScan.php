@@ -1,11 +1,14 @@
 <?php
 namespace Cvar1984\SqlScan;
+
 use Cvar1984\SqlScan\Cli as Cout;
 
-class SqlScan  {
-    protected static $sql;
+class SqlScan
+{
+    protected static array $sqlList;
+    protected static array $bannedExtension;
 
-    function __construct()
+    public function __construct()
     {
         // setup
         $sql = file_get_contents('phar://main.phar/assets/sql.ini');
@@ -15,10 +18,23 @@ class SqlScan  {
 
         Cout::printSuccess('Sql word included');
         $sql = trim($sql, ',');
-        self::$sql = explode(',', $sql);
+        self::$sqlList = explode(',', $sql);
+        self::$bannedExtension = [
+            'pdf',
+            'zip',
+            'mp3',
+            'mp4',
+            '3gp',
+            'jpg',
+            'png',
+            'gif',
+            'iso',
+            'gz',
+            'rar',
+        ];
     }
 
-    public function scan(string $url, string $filename)
+    public function scan(string $url, string $filename) : void
     {
         $parser = new \Cvar1984\SqlScan\WebsiteParser($url);
         if (empty($url)) {
@@ -26,24 +42,20 @@ class SqlScan  {
         }
 
         Cout::printLine('Extracting : ' . $url);
-        $url   = $parser->getHrefLinks();
+        $url = $parser->getHrefLinks();
         $count = sizeof($url);
         Cout::printLine('Total raw urls : ' . $count);
 
         if (!empty($count)) {
-            $urlz = array();
+            $urlz = [];
             foreach ($url as $urls) {
-                if (pathinfo($urls[0], PATHINFO_EXTENSION) == 'pdf') continue;
-                elseif (pathinfo($urls[0], PATHINFO_EXTENSION) == 'zip') continue;
-                elseif (pathinfo($urls[0], PATHINFO_EXTENSION) == 'mp4') continue;
-                elseif (pathinfo($urls[0], PATHINFO_EXTENSION) == 'mp3') continue;
-                elseif (pathinfo($urls[0], PATHINFO_EXTENSION) == 'tar') continue;
-                elseif (pathinfo($urls[0], PATHINFO_EXTENSION) == 'jpg') continue;
-                elseif (pathinfo($urls[0], PATHINFO_EXTENSION) == 'png') continue;
-                elseif (pathinfo($urls[0], PATHINFO_EXTENSION) == 'gif') continue;
-                elseif (pathinfo($urls[0], PATHINFO_EXTENSION) == 'm4a') continue;
-                elseif (pathinfo($urls[0], PATHINFO_EXTENSION) == '3gp') continue;
-                if (!preg_match('/=/', $urls[0])) continue;
+                $urlExtension = pathinfo($urls[0], PATHINFO_EXTENSION);
+                if (in_array($urlExtension, self::$bannedExtension)) {
+                    continue;
+                }
+                if (!preg_match('/=/', $urls[0])) {
+                    continue;
+                }
                 $urlz[] = $urls[0];
             }
             $count = count($urlz);
@@ -51,13 +63,15 @@ class SqlScan  {
             Cout::printLine('Total available urls : ' . $count);
             foreach ($urlz as $urls) {
                 $urls = str_replace('=', '=\'', $urls);
-                //Cout::printLine('Testing : ' . $urls);
+                Cout::printStandar('Scanning ');
                 $progressBar->advance();
                 $result = @file_get_contents($urls);
 
-                foreach (self::$sql as $sqli) {
-                    if (preg_match('/' . $sqli . '/', $result)) {
+                foreach (self::$sqlList as $sqli) {
+                    if (preg_match('/' . $sqli . '/Usi', $result)) {
                         Cout::printSuccess('Hit (' . $sqli . ')');
+                        Cout::printSuccess('Url (' . $urls . ')');
+                        Cout::printSuccess('Saved (' . $filename . ')');
                         $file = @fopen($filename, 'a');
                         if (!$file) {
                             Cout::printWarning('warning can\'t write result');
